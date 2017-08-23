@@ -16,6 +16,8 @@ import {GoalResultCreationComponent} from './components/goal-result-creation/goa
 import {GoalResultComponent} from './components/goal-result/goal-result.component';
 import {GoalCreationComponent} from './components/goal-creation/goal-creation.component';
 import {LoginComponent} from './components/login/login.component';
+import {FirebaseUIModule} from 'firebaseui-angular';
+import {firebaseUiAuthConfig} from './auth/firebase-ui-auth-config';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import {LoginComponent} from './components/login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MdButtonModule,
     MdCardModule,
     MdDatepickerModule,
