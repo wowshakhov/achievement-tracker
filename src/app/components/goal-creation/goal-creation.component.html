@@ -1,0 +1,17 @@
+<form>
+  <md-input-container>
+    <input mdInput placeholder="Name">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="Description">
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+  </md-input-container>
+  <md-datepicker #picker></md-datepicker>
+
+  <button md-button>Create</button>
+</form>
