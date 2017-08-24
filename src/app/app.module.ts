@@ -18,12 +18,15 @@ import {GoalCreationComponent} from './components/goal-creation/goal-creation.co
 import {LoginComponent} from './components/login/login.component';
 import {FirebaseUIModule} from 'firebaseui-angular';
 import {firebaseUiAuthConfig} from './auth/firebase-ui-auth-config';
+import { GoalListComponent } from './components/goal-list/goal-list.component';
+import { GoalService } from './services/goal.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoalComponent,
     GoalCreationComponent,
+    GoalListComponent,
     GoalResultComponent,
     GoalResultCreationComponent,
     LoginComponent,
@@ -44,6 +47,7 @@ import {firebaseUiAuthConfig} from './auth/firebase-ui-auth-config';
   ],
   providers: [
     AuthService,
+    GoalService,
     StorageService
   ],
   bootstrap: [AppComponent]
