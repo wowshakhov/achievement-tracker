@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import { GoalService } from '../../services/goal.service';
+import {StorageService} from '../../services/storage.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: 'main.component.html'
 })
 export class MainComponent {
-  public goals = this.goalService.getList();
+  public goals = this.storageService.list('/goal');
 
-  constructor(private goalService: GoalService) {}
+  constructor(private storageService: StorageService) {}
 }

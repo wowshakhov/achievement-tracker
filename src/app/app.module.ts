@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -18,8 +18,11 @@ import {GoalCreationComponent} from './components/goal-creation/goal-creation.co
 import {LoginComponent} from './components/login/login.component';
 import {FirebaseUIModule} from 'firebaseui-angular';
 import {firebaseUiAuthConfig} from './auth/firebase-ui-auth-config';
-import { GoalListComponent } from './components/goal-list/goal-list.component';
-import { GoalService } from './services/goal.service';
+import {GoalListComponent} from './components/goal-list/goal-list.component';
+import {GoalService} from './services/goal.service';
+import {MockGoalService} from './mock-services/mock-goal.service';
+import {MockGoalResultService} from './mock-services/mock-goal-result.service';
+import {GoalResultService} from './services/goal-result.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { GoalService } from './services/goal.service';
   providers: [
     AuthService,
     GoalService,
-    StorageService
+    StorageService,
+    { provide: GoalService, useClass: MockGoalService },
+    { provide: GoalResultService, useClass: MockGoalResultService }
   ],
   bootstrap: [AppComponent]
 })

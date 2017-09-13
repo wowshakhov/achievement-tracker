@@ -5,5 +5,5 @@ import {Component} from '@angular/core';
   templateUrl: 'goal-result-creation.component.html'
 })
 export class GoalResultCreationComponent {
-
+  public comment: string;
 }

@@ -5,9 +5,16 @@
   </md-card-header>
   <img md-card-image src="image">
   <md-card-content>
-    {{ goal.description }}
+    <div>{{ goal.description }}</div>
   </md-card-content>
   <md-card-actions>
     <button md-button>SHARE</button>
   </md-card-actions>
+</md-card>
+
+<md-card class="result-creation">
+  <md-card-header></md-card-header>
+  <md-card-content>
+    <app-goal-result-creation></app-goal-result-creation>
+  </md-card-content>
 </md-card>

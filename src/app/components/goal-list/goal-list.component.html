@@ -1,1 +1,3 @@
-<app-goal *ngFor="let goal of goalList" [goal]="goal"></app-goal>
+<div class="goal" *ngFor="let goal of goals">
+  <app-goal [goal]="goal"></app-goal>
+</div>
