@@ -6,6 +6,10 @@ import {Observable} from 'rxjs/Observable';
 export class StorageService {
   constructor(private firebaseStorage: AngularFireDatabase) {}
 
+  public createUniqueId(): string {
+    return this.firebaseStorage.createPushId();
+  }
+
   public object(path: string): AngularFireObject<{}> {
     return this.firebaseStorage.object(path);
   }
@@ -15,18 +19,14 @@ export class StorageService {
   }
 
   public set(path: string, value: any): Observable<any> {
-    return Observable.fromPromise(this.firebaseStorage.object(path).set(value));
+    return Observable.fromPromise(this.firebaseStorage.database.ref(path).set(value));
   }
 
   public update(path: string, value: any): Observable<any> {
-    return Observable.fromPromise(this.firebaseStorage.object(path).update(value));
+    return Observable.fromPromise(this.firebaseStorage.database.ref(path).update(value));
   }
 
-  public push(path: string, value: any): Observable<any> {
-    return Observable.fromPromise(this.firebaseStorage.list(path).push(value));
-  }
-
-  public remove(path: string, item: string): Observable<any> {
-    return Observable.fromPromise(this.firebaseStorage.list(path).remove(item));
+  public remove(path: string): Observable<any> {
+    return Observable.fromPromise(this.firebaseStorage.database.ref(path).remove());
   }
 }

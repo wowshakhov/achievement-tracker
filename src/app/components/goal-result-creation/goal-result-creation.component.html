@@ -1,3 +1,41 @@
-<mat-input-container>
-  <input matInput placeholder="Comment" [(ngModel)]="comment">
-</mat-input-container>
+<button type="button" mat-fab *ngIf="!formVisible">
+  <mat-icon (click)="showForm()">add</mat-icon>
+</button>
+
+<mat-card *ngIf="formVisible">
+  <form (submit)="onSubmit()">
+    <mat-input-container>
+      <input
+        name="comment"
+        matInput
+        placeholder="Comment"
+        [(ngModel)]="comment"
+      >
+    </mat-input-container>
+
+    <mat-input-container>
+      <input
+        name="date"
+        matInput
+        placeholder="Choose a date"
+        [matDatepicker]="picker"
+        [(ngModel)]="date"
+      >
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-input-container>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-input-container>
+      <input
+        name="resultMetric"
+        matInput
+        placeholder="Result"
+        [(ngModel)]="resultMetric"
+      >
+    </mat-input-container>
+
+    <button mat-button>Create</button>
+  </form>
+</mat-card>

@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BackendService } from './backend.service';
-import { Goal } from '../models/goal';
+import {Injectable} from '@angular/core';
+import {BackendService} from './backend.service';
 import {GoalResult} from '../models/goal-result';
 
 @Injectable()

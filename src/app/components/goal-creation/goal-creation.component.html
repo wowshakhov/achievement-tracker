@@ -1,18 +1,41 @@
-<form>
-  <mat-input-container>
-    <input matInput placeholder="Name">
-  </mat-input-container>
+<button type="button" mat-fab *ngIf="!formVisible">
+  <mat-icon (click)="showForm()">add</mat-icon>
+</button>
 
-  <mat-input-container>
-    <input matInput placeholder="Description">
-  </mat-input-container>
+<mat-card *ngIf="formVisible">
+  <form (submit)="onSubmit()">
+    <mat-input-container>
+      <input
+        name="title"
+        matInput
+        placeholder="Title"
+        [(ngModel)]="title"
+      >
+    </mat-input-container>
 
-  <mat-input-container>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-input-container>
+      <input
+        name="description"
+        matInput
+        placeholder="Description"
+        [(ngModel)]="description"
+      >
+    </mat-input-container>
+
+    <mat-input-container>
+      <input
+        name="dueDate"
+        matInput
+        placeholder="Choose a date"
+        [matDatepicker]="picker"
+        [(ngModel)]="dueDate"
+      >
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-input-container>
     <mat-datepicker #picker></mat-datepicker>
-  </mat-input-container>
-  <mat-datepicker #picker></mat-datepicker>
 
-  <button mat-button>Create</button>
-</form>
+    <button mat-button>Create</button>
+  </form>
+</mat-card>
