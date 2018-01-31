@@ -11,7 +11,7 @@ import {StorageService} from './services/storage.service';
 import {AuthService} from './services/auth.service';
 import {GoalComponent} from './components/goal/goal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCardModule, MdDatepickerModule, MdInputModule, MdNativeDateModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDatepickerModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import {GoalResultCreationComponent} from './components/goal-result-creation/goal-result-creation.component';
 import {GoalResultComponent} from './components/goal-result/goal-result.component';
 import {GoalCreationComponent} from './components/goal-creation/goal-creation.component';
@@ -23,6 +23,7 @@ import {GoalService} from './services/goal.service';
 import {MockGoalService} from './mock-services/mock-goal.service';
 import {MockGoalResultService} from './mock-services/mock-goal-result.service';
 import {GoalResultService} from './services/goal-result.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,11 +43,12 @@ import {GoalResultService} from './services/goal-result.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    MdButtonModule,
-    MdCardModule,
-    MdDatepickerModule,
-    MdInputModule,
-    MdNativeDateModule
+    MatButtonModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    FormsModule
   ],
   providers: [
     AuthService,

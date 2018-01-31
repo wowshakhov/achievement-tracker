@@ -6,7 +6,7 @@ import {StorageService} from '../../services/storage.service';
   templateUrl: 'main.component.html'
 })
 export class MainComponent {
-  public goals = this.storageService.list('/goal');
+  public goals = this.storageService.list('/goal').valueChanges();
 
   constructor(private storageService: StorageService) {}
 }

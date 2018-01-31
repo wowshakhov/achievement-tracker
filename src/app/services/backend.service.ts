@@ -11,14 +11,14 @@ export abstract class BackendService<M extends BaseModel> {
   constructor(protected storageService: StorageService) {}
 
   public get(id: string): Observable<M> {
-    return this.storageService.object(this.getPath(id))
+    return this.storageService.object(this.getPath(id)).valueChanges()
       .map(result => {
         return this.makeModel(result)
       });
   }
 
   public getList(): Observable<Array<M>> {
-    return this.storageService.list(this.entityName)
+    return this.storageService.list(this.entityName).valueChanges()
       .map(resultList => {
         return resultList.map(resultElement => {
           return this.makeModel(resultElement);

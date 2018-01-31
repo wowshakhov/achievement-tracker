@@ -1,17 +1,18 @@
 <form>
-  <md-input-container>
-    <input mdInput placeholder="Name">
-  </md-input-container>
+  <mat-input-container>
+    <input matInput placeholder="Name">
+  </mat-input-container>
 
-  <md-input-container>
-    <input mdInput placeholder="Description">
-  </md-input-container>
+  <mat-input-container>
+    <input matInput placeholder="Description">
+  </mat-input-container>
 
-  <md-input-container>
-    <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-    <button mdSuffix [mdDatepickerToggle]="picker"></button>
-  </md-input-container>
-  <md-datepicker #picker></md-datepicker>
+  <mat-input-container>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-input-container>
+  <mat-datepicker #picker></mat-datepicker>
 
-  <button md-button>Create</button>
+  <button mat-button>Create</button>
 </form>
