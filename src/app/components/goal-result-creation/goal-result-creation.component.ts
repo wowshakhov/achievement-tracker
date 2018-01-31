@@ -10,7 +10,7 @@ import {GoalResultService} from '../../services/goal-result.service';
 })
 export class GoalResultCreationComponent {
   public formVisible = false;
-  public comment: string;
+  public comment = '';
   public date: Date;
   public resultMetric: ResultMetric;
   public photo: Photo;

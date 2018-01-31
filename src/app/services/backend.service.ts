@@ -10,25 +10,24 @@ export abstract class BackendService<M extends BaseModel> {
 
   constructor(protected storageService: StorageService) {}
 
-  public create(object: any): Observable<void> {
-    return this.storageService.set(this.getNewEntityPath(), object);
+  public create(object: any): Observable<string> {
+    const id = this.storageService.createUniqueId();
+    return this.storageService.set(`${this.entityName}/${id}`, object).map(() => id);
   }
 
   public remove(id: string): Observable<void> {
-    return this.storageService.remove(this.getPath(id));
+    return this.storageService.remove(`${this.entityName}/${id}`);
   }
 
   public update(id: string, value: any): Observable<void> {
-    return this.storageService.update(this.getPath(id), value);
+    return this.storageService.update(`${this.entityName}/${id}`, value);
   }
 
   public get(id: string): Observable<M> {
     return this.storageService
-      .object(this.getPath(id))
+      .object(`${this.entityName}/${id}`)
       .valueChanges()
-      .map(result => {
-        return this.makeModel(id, result);
-      });
+      .map(result => this.makeModel(id, result));
   }
 
   public getList(): Observable<Array<M>> {
@@ -44,14 +43,6 @@ export abstract class BackendService<M extends BaseModel> {
           return list.concat(this.makeModel(id, result[id]));
         }, []);
       });
-  }
-
-  private getPath(id: string): string {
-    return `${this.entityName}/${id}`;
-  }
-
-  private getNewEntityPath(): string {
-    return `${this.entityName}/${this.storageService.createUniqueId()}`;
   }
 
   private makeModel(id: string, object: any): M {
