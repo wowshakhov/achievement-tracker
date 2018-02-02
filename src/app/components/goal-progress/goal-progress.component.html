@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title>Progress</mat-card-title>
+  <mat-card-content>
+    <ngx-charts-line-chart
+      [view]="[700, 400]"
+      [scheme]="{ domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] }"
+      [results]="results"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Date'"
+      [yAxisLabel]="'Metric'"
+      [autoScale]="true"
+      (select)="onSelect($event)">
+    </ngx-charts-line-chart>
+  </mat-card-content>
+</mat-card>

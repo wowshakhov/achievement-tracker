@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BackendService} from './backend.service';
 import {GoalResult} from '../models/goal-result';
-import {Observable} from 'rxjs/Observable';
 import {GoalService} from './goal.service';
 import {StorageService} from './storage.service';
 
@@ -17,8 +16,7 @@ export class GoalResultService extends BackendService<GoalResult> {
     super(storageService);
   }
 
-  public create(object: { goalId: string } & any): Observable<string> {
-    return super.create(object)
-      .switchMap(id => this.goalService.addGoalResult(id, object.goalId));
+  public getListForGoal(id: string) {
+    return this.getList(ref => ref.orderByChild('goalId').equalTo(id));
   }
 }

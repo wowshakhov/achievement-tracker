@@ -8,9 +8,11 @@ export class GoalService extends BackendService<Goal> {
   protected entityName = 'goal';
   protected entityModel = Goal;
 
-  public addGoalResult(id: string, resultId: string): Observable<string> {
-    return this.storageService
-      .update(`${this.entityName}/${id}/${resultId}`, true)
-      .map(() => id);
+  public share(id: string) {
+    return this.update(id, { shared: true });
+  }
+
+  public unshare(id: string) {
+    return this.update(id, { shared: false });
   }
 }

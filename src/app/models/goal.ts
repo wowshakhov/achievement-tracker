@@ -4,5 +4,5 @@ export class Goal extends BaseModel {
   public title: string;
   public description: string;
   public dueDate: string;
-  public sharable: boolean;
+  public shared: boolean;
 }

@@ -8,4 +8,4 @@ export const goals = [
     id: 'test-goal-2'
   }
 ]
-  .map(goalData =>  new Goal(goalData.id, {}));
+  .map(goalData =>  new Goal(goalData));

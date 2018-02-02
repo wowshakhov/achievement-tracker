@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireList, AngularFireObject, QueryFn} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -14,8 +14,8 @@ export class StorageService {
     return this.firebaseStorage.object(path);
   }
 
-  public list(path: string): AngularFireList<{}> {
-    return this.firebaseStorage.list(path);
+  public list(path: string, queryFn?: QueryFn): AngularFireList<{}> {
+    return this.firebaseStorage.list(path, queryFn);
   }
 
   public set(path: string, value: any): Observable<any> {

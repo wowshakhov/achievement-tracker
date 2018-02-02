@@ -1,25 +1,16 @@
 <mat-card>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ goal.title }}</mat-card-title>
-      <mat-card-subtitle>{{ goal.dueDate }}</mat-card-subtitle>
-    </mat-card-header>
-    <!--<img mat-card-image src="image">-->
-    <mat-card-content>
-      <div>{{ goal.description }}</div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>SHARE</button>
-      <button mat-button (click)="remove()">DELETE</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <app-goal-result-list [goalResults]="goalResults | async"></app-goal-result-list>
-
-  <mat-card class="result-creation">
-    <mat-card-header></mat-card-header>
-    <mat-card-content>
-      <app-goal-result-creation></app-goal-result-creation>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ goal.title }}</mat-card-title>
+    <mat-card-subtitle>{{ goal.dueDate }}</mat-card-subtitle>
+  </mat-card-header>
+  <!--<img mat-card-image src="image">-->
+  <mat-card-content>
+    <div>{{ goal.description }}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="showOpenButton" mat-button (click)="open()">OPEN</button>
+    <button mat-button *ngIf="!goal.shared" (click)="share()">SHARE</button>
+    <button mat-button *ngIf="goal.shared" (click)="unshare()">UNSHARE</button>
+    <button mat-button (click)="remove()">DELETE</button>
+  </mat-card-actions>
 </mat-card>

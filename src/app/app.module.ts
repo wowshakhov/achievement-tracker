@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
@@ -20,12 +19,14 @@ import {FirebaseUIModule} from 'firebaseui-angular';
 import {firebaseUiAuthConfig} from './auth/firebase-ui-auth-config';
 import {GoalListComponent} from './components/goal-list/goal-list.component';
 import {GoalService} from './services/goal.service';
-import { RouterModule, Routes } from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {GoalResultService} from './services/goal-result.service';
 import {FormsModule} from '@angular/forms';
 import {GoalResultListComponent} from './components/goal-result-list/goal-result-list.component';
 import {routes} from './app.routing';
 import {GoalPageComponent} from './components/goal-page/goal-page.component';
+import {GoalProgressComponent} from './components/goal-progress/goal-progress.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {GoalPageComponent} from './components/goal-page/goal-page.component';
     LoginComponent,
     MainComponent,
     GoalResultListComponent,
-    GoalPageComponent
+    GoalPageComponent,
+    GoalProgressComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import {GoalPageComponent} from './components/goal-page/goal-page.component';
     MatNativeDateModule,
     FormsModule,
     MatIconModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgxChartsModule
   ],
   providers: [
     AuthService,

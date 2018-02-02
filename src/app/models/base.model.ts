@@ -1,9 +1,7 @@
 export class BaseModel {
   public id: string;
 
-  constructor(id: string, params: any) {
-    this.id = id;
-
+  constructor(params: any) {
     Object.keys(params).forEach(key => {
       this[key] = params[key];
     });

@@ -10,4 +10,4 @@ export const goalResults = [
     comment: 'test-goal-result-2'
   }
 ]
-  .map(entry => new GoalResult(entry.id, { comment: entry.comment }));
+  .map(entry => new GoalResult(entry));

@@ -3,8 +3,7 @@ import {Goal} from '../../models/goal';
 
 @Component({
   selector: 'app-goal-list',
-  templateUrl: 'goal-list.component.html',
-  styleUrls: ['goal-list.component.scss']
+  templateUrl: 'goal-list.component.html'
 })
 export class GoalListComponent {
   @Input() public goals: Array<Goal> = [];

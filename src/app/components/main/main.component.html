@@ -1,2 +1,4 @@
-<app-goal-list [goals]="goals | async"></app-goal-list>
-<app-goal-creation></app-goal-creation>
+<ng-container *ngIf="goals | async as goals">
+  <app-goal-list [goals]="goals"></app-goal-list>
+  <app-goal-creation></app-goal-creation>
+</ng-container>

@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Photo} from '../../models/photo.model';
 import {ResultMetric} from '../../models/result-metric';
 import {GoalResultService} from '../../services/goal-result.service';
+import {Goal} from '../../models/goal';
 
 @Component({
   selector: 'app-goal-result-creation',
@@ -9,6 +10,7 @@ import {GoalResultService} from '../../services/goal-result.service';
   styleUrls: ['goal-result-creation.component.scss']
 })
 export class GoalResultCreationComponent {
+  @Input() private goal: Goal;
   public formVisible = false;
   public comment = '';
   public date: Date;
@@ -33,6 +35,7 @@ export class GoalResultCreationComponent {
   private createGoalResult() {
     this.goalResultService
       .create({
+        goalId: this.goal.id,
         comment: this.comment,
         date: this.date,
         resultMetric: this.resultMetric,
