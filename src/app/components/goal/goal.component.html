@@ -14,7 +14,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <app-goal-result-list goalResults="goalResults | async"></app-goal-result-list>
+  <app-goal-result-list [goalResults]="goalResults | async"></app-goal-result-list>
 
   <mat-card class="result-creation">
     <mat-card-header></mat-card-header>

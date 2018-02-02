@@ -4,4 +4,8 @@
     <div>{{ goalResult.date }}</div>
     <div>{{ goalResult.resultMetric }}</div>
   </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="remove()">DELETE</button>
+  </mat-card-actions>
 </mat-card>

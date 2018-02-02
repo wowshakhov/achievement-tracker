@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {GoalResult} from '../../models/goal-result';
+import {GoalResultService} from '../../services/goal-result.service';
 
 @Component({
   selector: 'app-goal-result',
@@ -8,4 +9,10 @@ import {GoalResult} from '../../models/goal-result';
 })
 export class GoalResultComponent {
   @Input() public goalResult: GoalResult;
+
+  constructor(private goalResultService: GoalResultService) {}
+
+  public remove() {
+    this.goalResultService.remove(this.goalResult.id);
+  }
 }

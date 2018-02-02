@@ -20,9 +20,12 @@ import {FirebaseUIModule} from 'firebaseui-angular';
 import {firebaseUiAuthConfig} from './auth/firebase-ui-auth-config';
 import {GoalListComponent} from './components/goal-list/goal-list.component';
 import {GoalService} from './services/goal.service';
-import {MockGoalResultService} from './mock-services/mock-goal-result.service';
+import { RouterModule, Routes } from '@angular/router';
 import {GoalResultService} from './services/goal-result.service';
 import {FormsModule} from '@angular/forms';
+import {GoalResultListComponent} from './components/goal-result-list/goal-result-list.component';
+import {routes} from './app.routing';
+import {GoalPageComponent} from './components/goal-page/goal-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import {FormsModule} from '@angular/forms';
     GoalResultComponent,
     GoalResultCreationComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    GoalResultListComponent,
+    GoalPageComponent
   ],
   imports: [
     BrowserModule,
@@ -49,12 +54,13 @@ import {FormsModule} from '@angular/forms';
     MatNativeDateModule,
     FormsModule,
     MatIconModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     AuthService,
     GoalService,
     StorageService,
-    { provide: GoalResultService, useClass: MockGoalResultService }
+    GoalResultService
   ],
   bootstrap: [AppComponent]
 })

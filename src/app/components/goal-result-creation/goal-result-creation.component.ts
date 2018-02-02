@@ -36,7 +36,7 @@ export class GoalResultCreationComponent {
         comment: this.comment,
         date: this.date,
         resultMetric: this.resultMetric,
-        photo: this.photo
+        // photo: this.photo
       });
   }
 }

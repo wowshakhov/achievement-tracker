@@ -3,8 +3,7 @@ import {GoalResult} from '../../models/goal-result';
 
 @Component({
   selector: 'app-goal-result-list',
-  templateUrl: 'goal-result-list.component.html',
-  styleUrls: ['goal-result-list.component.scss']
+  templateUrl: 'goal-result-list.component.html'
 })
 export class GoalResultListComponent {
   @Input() public goalResults: Array<GoalResult> = [];
