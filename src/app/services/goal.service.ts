@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {BackendService} from './backend.service';
+import {BackendDatabaseService} from './backend-database.service';
 import {Goal} from '../models/goal';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class GoalService extends BackendService<Goal> {
+export class GoalService extends BackendDatabaseService<Goal> {
   protected entityName = 'goal';
   protected entityModel = Goal;
 

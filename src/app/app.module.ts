@@ -6,7 +6,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {MainComponent} from './components/main/main.component';
-import {StorageService} from './services/storage.service';
+import {FirebaseDatabaseService} from './services/firebase-database.service';
 import {AuthService} from './services/auth.service';
 import {GoalComponent} from './components/goal/goal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,6 +27,8 @@ import {routes} from './app.routing';
 import {GoalPageComponent} from './components/goal-page/goal-page.component';
 import {GoalProgressComponent} from './components/goal-progress/goal-progress.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {FirebaseStorageService} from './services/firebase-storage.service';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MatButtonModule,
     MatCardModule,
@@ -62,7 +65,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
   providers: [
     AuthService,
     GoalService,
-    StorageService,
+    FirebaseDatabaseService,
+    FirebaseStorageService,
     GoalResultService
   ],
   bootstrap: [AppComponent]

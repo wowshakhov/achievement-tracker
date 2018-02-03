@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
-import {BackendService} from './backend.service';
+import {BackendDatabaseService} from './backend-database.service';
 import {GoalResult} from '../models/goal-result';
 import {GoalService} from './goal.service';
-import {StorageService} from './storage.service';
+import {FirebaseDatabaseService} from './firebase-database.service';
 
 @Injectable()
-export class GoalResultService extends BackendService<GoalResult> {
+export class GoalResultService extends BackendDatabaseService<GoalResult> {
   protected entityName = 'goal-result';
   protected entityModel = GoalResult;
 
   constructor(
     private goalService: GoalService,
-    protected storageService: StorageService
+    protected storageService: FirebaseDatabaseService
   ) {
     super(storageService);
   }
