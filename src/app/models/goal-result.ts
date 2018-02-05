@@ -8,4 +8,5 @@ export class GoalResult extends BaseModel {
   public comment: string;
   public date: Date;
   public resultMetric: ResultMetric;
+  public userId: string;
 }

@@ -4,13 +4,15 @@ import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {MainComponent} from './components/main/main.component';
 import {FirebaseDatabaseService} from './services/firebase-database.service';
 import {AuthService} from './services/auth.service';
 import {GoalComponent} from './components/goal/goal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatNativeDateModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatNativeDateModule,
+  MatTabsModule
+} from '@angular/material';
 import {GoalResultCreationComponent} from './components/goal-result-creation/goal-result-creation.component';
 import {GoalResultComponent} from './components/goal-result/goal-result.component';
 import {GoalCreationComponent} from './components/goal-creation/goal-creation.component';
@@ -29,6 +31,7 @@ import {GoalProgressComponent} from './components/goal-progress/goal-progress.co
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {FirebaseStorageService} from './services/firebase-storage.service';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,7 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    AngularFirestoreModule,
     AngularFireStorageModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MatButtonModule,
@@ -60,7 +63,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     FormsModule,
     MatIconModule,
     RouterModule.forRoot(routes),
-    NgxChartsModule
+    NgxChartsModule,
+    MatTabsModule
   ],
   providers: [
     AuthService,

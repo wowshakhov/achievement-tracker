@@ -15,26 +15,25 @@
 
     <mat-input-container>
       <input
-        name="date"
-        matInput
-        placeholder="Choose a date"
-        [matDatepicker]="picker"
-        [(ngModel)]="date"
-      >
-
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-input-container>
-    <mat-datepicker #picker></mat-datepicker>
-
-    <mat-input-container>
-      <input
         name="resultMetric"
         matInput
         placeholder="Result"
         [(ngModel)]="resultMetric"
       >
     </mat-input-container>
+
+    <mat-input-container>
+      <input
+        name="date"
+        matInput
+        placeholder="Choose a date"
+        [matDatepicker]="picker"
+        [(ngModel)]="date"
+      >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-input-container>
+    <mat-datepicker #picker></mat-datepicker>
 
     <button mat-button>Create</button>
   </form>

@@ -3,6 +3,7 @@ import {Photo} from '../../models/photo.model';
 import {ResultMetric} from '../../models/result-metric';
 import {GoalResultService} from '../../services/goal-result.service';
 import {Goal} from '../../models/goal';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-goal-result-creation',
@@ -17,7 +18,10 @@ export class GoalResultCreationComponent {
   public resultMetric: ResultMetric;
   public photo: Photo;
 
-  constructor(private goalResultService: GoalResultService) {}
+  constructor(
+    private authService: AuthService,
+    private goalResultService: GoalResultService
+  ) {}
 
   public showForm() {
     this.formVisible = true;
@@ -39,6 +43,7 @@ export class GoalResultCreationComponent {
         comment: this.comment,
         date: this.date,
         resultMetric: this.resultMetric,
+        userId: this.authService.uid,
         // photo: this.photo
       });
   }

@@ -31,5 +31,7 @@ export class GoalComponent {
 
   public remove() {
     this.goalService.remove(this.goal.id);
+    this.router.navigate(['/']);
+
   }
 }

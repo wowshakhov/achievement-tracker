@@ -2,14 +2,18 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {BaseModel} from '../models/base.model';
 import {FirebaseDatabaseService} from './firebase-database.service';
-import {QueryFn} from 'angularfire2/database';
+import {QueryFn} from 'angularfire2/firestore';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export abstract class BackendDatabaseService<M extends BaseModel> {
   protected abstract entityName: string;
   protected abstract entityModel: { new(params: any): M };
 
-  constructor(protected databaseService: FirebaseDatabaseService) {}
+  constructor(
+    protected authService: AuthService,
+    protected databaseService: FirebaseDatabaseService
+  ) {}
 
   public create(object: any): Observable<string> {
     const id = this.databaseService.createUniqueId();

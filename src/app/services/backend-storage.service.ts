@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {BaseModel} from '../models/base.model';
 import {FirebaseStorageService} from './firebase-storage.service';
 
 @Injectable()

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {GoalService} from '../../services/goal.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-goal-creation',
@@ -12,7 +13,10 @@ export class GoalCreationComponent {
   public description = '';
   public dueDate = new Date();
 
-  constructor(private goalService: GoalService) {}
+  constructor(
+    private authService: AuthService,
+    private goalService: GoalService
+  ) {}
 
   public showForm() {
     this.formVisible = true;
@@ -32,7 +36,8 @@ export class GoalCreationComponent {
       .create({
         title: this.title,
         description: this.description,
-        dueDate: this.dueDate.toLocaleDateString()
+        dueDate: this.dueDate,
+        userId: this.authService.uid,
       });
   }
 }
