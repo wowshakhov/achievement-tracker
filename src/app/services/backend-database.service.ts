@@ -5,23 +5,26 @@ import {FirebaseDatabaseService} from './firebase-database.service';
 import {QueryFn} from 'angularfire2/firestore';
 import {AuthService} from './auth.service';
 
+export interface IDatabaseServiceConfig<M> {
+  entityName: string;
+  entityModel: { new(params: any): M };
+}
+
 @Injectable()
-export abstract class BackendDatabaseService<M extends BaseModel> {
-  protected abstract entityName: string;
-  protected abstract entityModel: { new(params: any): M };
+export class BackendDatabaseService<M extends BaseModel> {
 
   constructor(
     protected authService: AuthService,
     protected databaseService: FirebaseDatabaseService
   ) {}
 
-  public create(object: any): Observable<string> {
+  public create(params: { object: any, config: IDatabaseServiceConfig<M> }): Observable<string> {
     const id = this.databaseService.createUniqueId();
-    return this.databaseService.set(`${this.entityName}/${id}`, { ...object, id }).map(() => id);
+    return this.databaseService.set(`${params.config.entityName}/${id}`, { ...params.object, id }).map(() => id);
   }
 
-  public remove(id: string): Observable<void> {
-    return this.databaseService.remove(`${this.entityName}/${id}`);
+  public remove(params: { id: string, config: IDatabaseServiceConfig<M> }): Observable<void> {
+    return this.databaseService.remove(`${params.config.entityName}/${id}`);
   }
 
   public update(id: string, value: any): Observable<void> {

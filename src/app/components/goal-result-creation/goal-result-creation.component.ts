@@ -15,7 +15,7 @@ export class GoalResultCreationComponent {
   public comment = '';
   public date = new Date();
   public resultMetric: ResultMetric;
-  public photo: Photo;
+  public photo: File;
 
   constructor(
     private authService: AuthService,
@@ -41,7 +41,7 @@ export class GoalResultCreationComponent {
         date: this.date,
         resultMetric: this.resultMetric,
         userId: this.authService.uid,
-        // photo: this.photo
+        photo: this.photo
       });
   }
 }

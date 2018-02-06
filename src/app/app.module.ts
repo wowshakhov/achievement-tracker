@@ -32,6 +32,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {FirebaseStorageService} from './services/firebase-storage.service';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {FileInputComponent} from './components/file-input/file-input.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
     MainComponent,
     GoalResultListComponent,
     GoalPageComponent,
-    GoalProgressComponent
+    GoalProgressComponent,
+    FileInputComponent
   ],
   entryComponents: [
     GoalCreationComponent,
