@@ -19,9 +19,6 @@ export class GoalResultService extends BackendDatabaseService<GoalResult> {
   }
 
   public getListForGoal(id: string) {
-    return this.getList(ref => ref
-      .where('userId', '==', this.authService.uid)
-      .where('goalId', '==', id)
-    );
+    return this.getList(ref => ref.where('goalId', '==', id));
   }
 }

@@ -6,6 +6,12 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button (click)="remove()">DELETE</button>
+    <button
+      *ngIf="showDeleteButton"
+      mat-button
+      (click)="remove()"
+    >
+      DELETE
+    </button>
   </mat-card-actions>
 </mat-card>

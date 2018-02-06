@@ -1,3 +1,8 @@
 <div class="list-item" *ngFor="let goal of goals">
-  <app-goal [showOpenButton]="true" [goal]="goal"></app-goal>
+  <app-goal
+    [showOpenButton]="true"
+    [showShareButton]="isSelf(goal)"
+    [showDeleteButton]="isSelf(goal)"
+    [goal]="goal"
+  ></app-goal>
 </div>

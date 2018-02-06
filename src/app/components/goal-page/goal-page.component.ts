@@ -3,6 +3,7 @@ import {GoalService} from '../../services/goal.service';
 import {GoalResultService} from '../../services/goal-result.service';
 import {ActivatedRoute} from '@angular/router';
 import {combineLatest} from 'rxjs/observable/combineLatest';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-goal-page',
@@ -14,8 +15,13 @@ export class GoalPageComponent {
   public data = combineLatest(this.goal, this.goalResults, (goal, goalResults) => ({ goal, goalResults }));
 
   constructor(
+    private authService: AuthService,
     private goalService: GoalService,
     private goalResultService: GoalResultService,
     private route: ActivatedRoute
   ) {}
+
+  public get userId(): string {
+    return this.authService.uid;
+  }
 }

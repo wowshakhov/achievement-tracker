@@ -12,6 +12,9 @@
   </div>
 
   <div class="list-item">
-    <app-goal-result-creation [goal]="data.goal"></app-goal-result-creation>
+    <app-goal-result-creation
+      *ngIf="data.goal.userId === userId"
+      [goal]="data.goal"
+    ></app-goal-result-creation>
   </div>
 </ng-container>

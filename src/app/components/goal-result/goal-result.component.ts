@@ -9,6 +9,7 @@ import {GoalResultService} from '../../services/goal-result.service';
 })
 export class GoalResultComponent {
   @Input() public goalResult: GoalResult;
+  @Input() public showDeleteButton: boolean;
 
   constructor(private goalResultService: GoalResultService) {}
 

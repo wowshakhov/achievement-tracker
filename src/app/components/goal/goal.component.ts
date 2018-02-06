@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 export class GoalComponent {
   @Input() public goal: Goal;
   @Input() public showOpenButton: boolean;
+  @Input() public showShareButton: boolean;
+  @Input() public showDeleteButton: boolean;
 
   constructor(
     private goalService: GoalService,

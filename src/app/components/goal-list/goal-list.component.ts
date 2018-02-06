@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Goal} from '../../models/goal';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-goal-list',
@@ -7,4 +8,10 @@ import {Goal} from '../../models/goal';
 })
 export class GoalListComponent {
   @Input() public goals: Array<Goal> = [];
+
+  constructor(private authService: AuthService) {}
+
+  public isSelf(goal: Goal): boolean {
+    return this.authService.uid === goal.userId;
+  }
 }

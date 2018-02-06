@@ -8,9 +8,36 @@
     <div>{{ goal.description }}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="showOpenButton" mat-button (click)="open()">OPEN</button>
-    <button mat-button *ngIf="!goal.shared" (click)="share()">SHARE</button>
-    <button mat-button *ngIf="goal.shared" (click)="unshare()">UNSHARE</button>
-    <button mat-button (click)="remove()">DELETE</button>
+    <button
+      mat-button
+      *ngIf="showOpenButton"
+      (click)="open()"
+    >
+      OPEN
+    </button>
+
+    <button
+      mat-button
+      *ngIf="!goal.shared && showShareButton"
+      (click)="share()"
+    >
+      SHARE
+    </button>
+
+    <button
+      mat-button
+      *ngIf="goal.shared && showShareButton"
+      (click)="unshare()"
+    >
+      UNSHARE
+    </button>
+
+    <button
+      mat-button
+      *ngIf="showDeleteButton"
+      (click)="remove()"
+    >
+      DELETE
+    </button>
   </mat-card-actions>
 </mat-card>

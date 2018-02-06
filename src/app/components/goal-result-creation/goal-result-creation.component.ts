@@ -14,7 +14,7 @@ export class GoalResultCreationComponent {
   @Input() private goal: Goal;
   public formVisible = false;
   public comment = '';
-  public date: Date;
+  public date = new Date();
   public resultMetric: ResultMetric;
   public photo: Photo;
 
