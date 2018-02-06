@@ -4,6 +4,7 @@ import {GoalResultService} from '../../services/goal-result.service';
 import {ActivatedRoute} from '@angular/router';
 import {combineLatest} from 'rxjs/observable/combineLatest';
 import {AuthService} from '../../services/auth.service';
+import {Goal} from '../../models/goal';
 
 @Component({
   selector: 'app-goal-page',

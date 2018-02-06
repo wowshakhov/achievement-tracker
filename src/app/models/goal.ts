@@ -6,4 +6,8 @@ export class Goal extends BaseModel {
   public dueDate: string;
   public shared: boolean;
   public userId: string;
+
+  public ownedBy(userId: string): boolean {
+    return this.userId === userId;
+  }
 }

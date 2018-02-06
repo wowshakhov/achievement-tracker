@@ -1,6 +1,6 @@
 <div class="list-item" *ngFor="let goalResult of goalResults">
   <app-goal-result
     [goalResult]="goalResult"
-    [showDeleteButton]="isSelf(goalResult)"
+    [showDeleteButton]="goalResult.ownedBy(userId)"
   ></app-goal-result>
 </div>

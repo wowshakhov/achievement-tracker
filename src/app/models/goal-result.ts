@@ -9,4 +9,8 @@ export class GoalResult extends BaseModel {
   public date: Date;
   public resultMetric: ResultMetric;
   public userId: string;
+
+  public ownedBy(userId: string): boolean {
+    return this.userId === userId;
+  }
 }

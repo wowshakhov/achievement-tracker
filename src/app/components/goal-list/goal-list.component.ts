@@ -11,7 +11,7 @@ export class GoalListComponent {
 
   constructor(private authService: AuthService) {}
 
-  public isSelf(goal: Goal): boolean {
-    return this.authService.uid === goal.userId;
+  public get userId(): string {
+    return this.authService.uid;
   }
 }
