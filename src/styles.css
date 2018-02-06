@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.list-item {
-  margin-bottom: 10px;
+body {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+mat-card, mat-tab-group {
+  margin: 10px auto;
 }

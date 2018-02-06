@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {GoalResult} from '../../models/goal-result';
+import {isNumber} from 'util';
 
 @Component({
   selector: 'app-goal-progress',
@@ -18,10 +19,12 @@ export class GoalProgressComponent implements OnChanges {
     if ('goalResults' in changes) {
       this.results = [{
         name: 'progress',
-        series: this.goalResults.map(result => ({
-          name: result.date || '',
-          value: result.resultMetric,
-        })),
+        series: this.goalResults
+          .filter(goalResult => !isNaN(+goalResult.resultMetric))
+          .map(result => ({
+            name: result.date || '',
+            value: result.resultMetric,
+          })),
       }];
     }
   }

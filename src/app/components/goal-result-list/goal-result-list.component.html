@@ -1,4 +1,4 @@
-<div class="list-item" *ngFor="let goalResult of goalResults">
+<div *ngFor="let goalResult of goalResults">
   <app-goal-result
     [goalResult]="goalResult"
     [showDeleteButton]="goalResult.ownedBy(userId)"

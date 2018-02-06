@@ -10,7 +10,7 @@ import {AuthService} from './services/auth.service';
 import {GoalComponent} from './components/goal/goal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatNativeDateModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatIconModule, MatInputModule, MatNativeDateModule,
   MatTabsModule
 } from '@angular/material';
 import {GoalResultCreationComponent} from './components/goal-result-creation/goal-result-creation.component';
@@ -47,6 +47,10 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
     GoalPageComponent,
     GoalProgressComponent
   ],
+  entryComponents: [
+    GoalCreationComponent,
+    GoalResultCreationComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -64,7 +68,8 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
     MatIconModule,
     RouterModule.forRoot(routes),
     NgxChartsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
   providers: [
     AuthService,

@@ -1,9 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {Photo} from '../../models/photo.model';
 import {ResultMetric} from '../../models/result-metric';
 import {GoalResultService} from '../../services/goal-result.service';
 import {Goal} from '../../models/goal';
 import {AuthService} from '../../services/auth.service';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-goal-result-creation',
@@ -11,8 +12,6 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['goal-result-creation.component.scss']
 })
 export class GoalResultCreationComponent {
-  @Input() private goal: Goal;
-  public formVisible = false;
   public comment = '';
   public date = new Date();
   public resultMetric: ResultMetric;
@@ -20,15 +19,13 @@ export class GoalResultCreationComponent {
 
   constructor(
     private authService: AuthService,
-    private goalResultService: GoalResultService
+    private dialogRef: MatDialogRef<GoalResultCreationComponent>,
+    private goalResultService: GoalResultService,
+    @Inject(MAT_DIALOG_DATA) private data: { goal: Goal }
   ) {}
 
-  public showForm() {
-    this.formVisible = true;
-  }
-
   public hideForm() {
-    this.formVisible = false;
+    this.dialogRef.close();
   }
 
   public onSubmit() {
@@ -39,7 +36,7 @@ export class GoalResultCreationComponent {
   private createGoalResult() {
     this.goalResultService
       .create({
-        goalId: this.goal.id,
+        goalId: this.data.goal.id,
         comment: this.comment,
         date: this.date,
         resultMetric: this.resultMetric,

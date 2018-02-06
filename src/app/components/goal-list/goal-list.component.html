@@ -1,4 +1,4 @@
-<div class="list-item" *ngFor="let goal of goals">
+<div *ngFor="let goal of goals">
   <app-goal
     [showOpenButton]="true"
     [showShareButton]="goal.ownedBy(userId)"

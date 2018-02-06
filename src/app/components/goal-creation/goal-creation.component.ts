@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {GoalService} from '../../services/goal.service';
 import {AuthService} from '../../services/auth.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-goal-creation',
@@ -8,22 +9,18 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['goal-creation.component.scss']
 })
 export class GoalCreationComponent {
-  public formVisible = false;
   public title = '';
   public description = '';
   public dueDate = new Date();
 
   constructor(
+    private dialogRef: MatDialogRef<GoalCreationComponent>,
     private authService: AuthService,
     private goalService: GoalService
   ) {}
 
-  public showForm() {
-    this.formVisible = true;
-  }
-
   public hideForm() {
-    this.formVisible = false;
+    this.dialogRef.close();
   }
 
   public onSubmit() {

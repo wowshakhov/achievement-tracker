@@ -1,24 +1,20 @@
 <ng-container *ngIf="data | async as data">
-  <div class="list-item">
-    <app-goal
-      [goal]="data.goal"
-      [showShareButton]="data.goal.ownedBy(userId)"
-      [showDeleteButton]="data.goal.ownedBy(userId)"
-    ></app-goal>
-  </div>
+  <app-goal
+    [goal]="data.goal"
+    [showShareButton]="data.goal.ownedBy(userId)"
+    [showDeleteButton]="data.goal.ownedBy(userId)"
+  ></app-goal>
 
-  <div class="list-item">
-    <app-goal-progress [goalResults]="data.goalResults"></app-goal-progress>
-  </div>
+  <app-goal-progress [goalResults]="data.goalResults"></app-goal-progress>
 
-  <div class="list-item">
-    <app-goal-result-list [goalResults]="data.goalResults"></app-goal-result-list>
-  </div>
+  <app-goal-result-list [goalResults]="data.goalResults"></app-goal-result-list>
 
-  <div class="list-item">
-    <app-goal-result-creation
-      *ngIf="data.goal.ownedBy(userId)"
-      [goal]="data.goal"
-    ></app-goal-result-creation>
-  </div>
+  <button
+    *ngIf="data.goal.ownedBy(userId)"
+    class="fixed-fab"
+    type="button"
+    mat-fab
+  >
+    <mat-icon (click)="showForm(data.goal)">add</mat-icon>
+  </button>
 </ng-container>

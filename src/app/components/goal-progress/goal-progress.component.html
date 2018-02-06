@@ -1,4 +1,4 @@
-<mat-card *ngIf="goalResults.length > 1">
+<mat-card *ngIf="results && results[0].series.length > 1">
   <mat-card-title>Progress</mat-card-title>
   <mat-card-content>
     <ngx-charts-line-chart
