@@ -5,12 +5,16 @@ import {Component, EventEmitter, Output} from '@angular/core';
   templateUrl: 'file-input.component.html',
 })
 export class FileInputComponent {
-  @Output() change = new EventEmitter<File>();
+  @Output() private onChange: EventEmitter<File>;
 
-  public onChange(event: any) {
+  constructor() {
+    this.onChange = new EventEmitter<File>();
+  }
+
+  public onFileSelected(event: any) {
     const files = event.target.files;
     if (files.length) {
-      this.change.emit(event.target.files[0]);
+      this.onChange.emit(event.target.files[0]);
     }
   }
 }

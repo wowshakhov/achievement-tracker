@@ -23,24 +23,15 @@ export class GoalService {
   ) {}
 
   public get(id: string) {
-    return this.db.get({
-      id,
-      config: this.config,
-    });
+    return this.db.get({ id, config: this.config });
   }
 
   public create(object: IGoalCreationParams) {
-    return this.db.create({
-      object,
-      config: this.config,
-    });
+    return this.db.create({ object, config: this.config });
   }
 
   public remove(id: string) {
-    return this.db.remove({
-      id,
-      config: this.config,
-    });
+    return this.db.remove({ id, config: this.config });
   }
 
   public getUserGoals() {

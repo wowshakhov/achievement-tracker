@@ -1,9 +1,15 @@
 <mat-card>
-  <mat-card-content>
-    <div>{{ goalResult.comment }}</div>
-    <div>{{ goalResult.resultMetric }}</div>
-    <div>{{ goalResult.date | date }}</div>
-  </mat-card-content>
+  <mat-card-title>
+    <mat-card-title>
+      {{ goalResult.comment }}: {{ goalResult.resultMetric }}
+    </mat-card-title>
+
+    <mat-card-subtitle>{{ goalResult.date | date }}</mat-card-subtitle>
+  </mat-card-title>
+
+  <ng-container *ngIf="goalResult.photoUrl && goalResult.photoUrl !== 'loading'">
+    <img [src]="goalResult.photoUrl">
+  </ng-container>
 
   <mat-card-actions>
     <button

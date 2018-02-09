@@ -10,7 +10,14 @@ import {AuthService} from './services/auth.service';
 import {GoalComponent} from './components/goal/goal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatIconModule, MatInputModule, MatNativeDateModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatProgressSpinnerModule,
   MatTabsModule
 } from '@angular/material';
 import {GoalResultCreationComponent} from './components/goal-result-creation/goal-result-creation.component';
@@ -33,6 +40,8 @@ import {FirebaseStorageService} from './services/firebase-storage.service';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {FileInputComponent} from './components/file-input/file-input.component';
+import {BackendDatabaseService} from './services/backend-database.service';
+import {BackendStorageService} from './services/backend-storage.service';
 
 @NgModule({
   declarations: [
@@ -71,14 +80,17 @@ import {FileInputComponent} from './components/file-input/file-input.component';
     RouterModule.forRoot(routes),
     NgxChartsModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     AuthService,
     GoalService,
     FirebaseDatabaseService,
     FirebaseStorageService,
-    GoalResultService
+    GoalResultService,
+    BackendDatabaseService,
+    BackendStorageService
   ],
   bootstrap: [AppComponent]
 })

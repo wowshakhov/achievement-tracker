@@ -31,10 +31,8 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-input-container>
 
-  <mat-input-container>
-    <app-file-input (change)="setPhoto($event)"></app-file-input>
-  </mat-input-container>
   <mat-datepicker #picker></mat-datepicker>
+  <app-file-input (onChange)="setPhoto($event)"></app-file-input>
 </mat-dialog-content>
 
 <mat-dialog-actions>

@@ -9,8 +9,4 @@ export class FirebaseStorageService {
   public upload(path: string, data: Blob): AngularFireUploadTask {
     return this.firebaseStorage.upload(path, data);
   }
-
-  public download(path: string): Observable<any> {
-    return this.firebaseStorage.ref(path).getDownloadURL();
-  }
 }

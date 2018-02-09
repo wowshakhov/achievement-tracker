@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {GoalResult} from '../../models/goal-result';
-import {isNumber} from 'util';
 
 @Component({
   selector: 'app-goal-progress',

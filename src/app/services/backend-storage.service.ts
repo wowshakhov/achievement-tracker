@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {FirebaseStorageService} from './firebase-storage.service';
+import {AngularFireUploadTask} from 'angularfire2/storage';
 
 @Injectable()
-export abstract class BackendStorageService {
+export class BackendStorageService {
   constructor(protected storageService: FirebaseStorageService) {}
 
-  public upload(path: string, data: Blob): Observable<any> {
-    return Observable.fromPromise(this.storageService.upload(path, data));
-  }
-
-  public download(path: string): Observable<void> {
-    return this.storageService.download(path);
+  public upload(path: string, data: Blob): AngularFireUploadTask {
+    return this.storageService.upload(path, data);
   }
 }

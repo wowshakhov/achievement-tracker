@@ -24,6 +24,10 @@ export class GoalResultCreationComponent {
     @Inject(MAT_DIALOG_DATA) private data: { goal: Goal }
   ) {}
 
+  public setPhoto(photo: File) {
+    this.photo = photo;
+  }
+
   public hideForm() {
     this.dialogRef.close();
   }
@@ -42,6 +46,7 @@ export class GoalResultCreationComponent {
         date: this.date,
         resultMetric: this.resultMetric,
         photo: this.photo
-      });
+      })
+      .subscribe();
   }
 }
