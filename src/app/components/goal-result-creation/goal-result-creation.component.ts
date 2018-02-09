@@ -37,10 +37,10 @@ export class GoalResultCreationComponent {
     this.goalResultService
       .create({
         goalId: this.data.goal.id,
+        userId: this.authService.uid,
         comment: this.comment,
         date: this.date,
         resultMetric: this.resultMetric,
-        userId: this.authService.uid,
         photo: this.photo
       });
   }

@@ -12,7 +12,6 @@ export interface IDatabaseServiceConfig<M> {
 
 @Injectable()
 export class BackendDatabaseService<M extends BaseModel> {
-
   constructor(
     protected authService: AuthService,
     protected databaseService: FirebaseDatabaseService
@@ -20,30 +19,41 @@ export class BackendDatabaseService<M extends BaseModel> {
 
   public create(params: { object: any, config: IDatabaseServiceConfig<M> }): Observable<string> {
     const id = this.databaseService.createUniqueId();
-    return this.databaseService.set(`${params.config.entityName}/${id}`, { ...params.object, id }).map(() => id);
+    const path = `${params.config.entityName}/${id}`;
+    const value = { ...params.object, id };
+
+    return this.databaseService
+      .set(path, value)
+      .map(() => id);
   }
 
   public remove(params: { id: string, config: IDatabaseServiceConfig<M> }): Observable<void> {
-    return this.databaseService.remove(`${params.config.entityName}/${id}`);
+    const path = `${params.config.entityName}/${params.id}`;
+
+    return this.databaseService.remove(path);
   }
 
-  public update(id: string, value: any): Observable<void> {
-    return this.databaseService.update(`${this.entityName}/${id}`, value);
+  public update(params: { id: string, value: any, config: IDatabaseServiceConfig<M> }): Observable<void> {
+    const path = `${params.config.entityName}/${params.id}`;
+
+    return this.databaseService.update(path, params.value);
   }
 
-  public get(id: string): Observable<M> {
+  public get(params: { id: string, config: IDatabaseServiceConfig<M> }): Observable<M> {
+    const path = `${params.config.entityName}/${params.id}`;
+
     return this.databaseService
-      .object(`${this.entityName}/${id}`)
-      .map(result => this.makeModel(result));
+      .object(path)
+      .map(result => this.makeModel(result, params.config.entityModel));
   }
 
-  public getList(queryFn?: QueryFn): Observable<Array<M>> {
+  public getList(params: { queryFn?: QueryFn, config: IDatabaseServiceConfig<M> }): Observable<Array<M>> {
     return this.databaseService
-      .list(this.entityName, queryFn)
-      .map(result => result.map(object => this.makeModel(object)));
+      .list(params.config.entityName, params.queryFn)
+      .map(result => result.map(object => this.makeModel(object, params.config.entityModel)));
   }
 
-  private makeModel(object: any): M {
-    return new this.entityModel(object);
+  private makeModel(object: any, entityModel: { new(params: any): M }): M {
+    return new entityModel(object);
   }
 }
